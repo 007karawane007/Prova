@@ -1,0 +1,82 @@
+Programmazione (Python, Java, C++, C#, JavaScript, PHP, Ruby, Swift, Go)
+Sviluppo Web (HTML, CSS, JavaScript, React, Angular, Vue.js)
+Sviluppo Mobile (Android, iOS, Flutter, React Native)
+Data Science e Analisi Dati (SQL, R, Pandas, NumPy, Power BI, Tableau)
+Machine Learning e Intelligenza Artificiale (TensorFlow, PyTorch, Scikit-learn)
+Sicurezza Informatica (Penetration Testing, Ethical Hacking, Network Security)
+Cloud Computing (AWS, Azure, Google Cloud, Docker, Kubernetes)
+Blockchain e Criptovalute
+Segretario
+Realtà Virtuale e Aumentata (Unity, Unreal Engine)
+Automazione e Robotica (Arduino, Raspberry Pi, PLC)
+Sviluppo Software Agile (Scrum, Kanban, DevOps, Git, CI/CD)
+Test e Debugging Software
+Disegno CAD (AutoCAD, SolidWorks, CATIA)
+Controllo Qualità (Six Sigma, Lean Manufacturing, ISO 9001)
+Manutenzione Industriale e Automazione
+Robotica Industriale
+Progettazione Elettronica (PCB, FPGA, Arduino)
+Simulazione e Modellazione 3D
+Stampa 3D e Prototipazione
+Saldatura e Assemblaggio
+Sicurezza sul Lavoro e Normative HSE
+Contabilità Generale e Analitica
+Bilancio e Dichiarazione Fiscale
+Controllo di Gestione
+Analisi Finanziaria
+Trading e Mercati Finanziari
+Gestione del Budget
+Risk Management
+SEO e SEM (Google Analytics, Google Ads, Facebook Ads)
+Social Media Marketing (LinkedIn, Instagram, Facebook, TikTok)
+Copywriting e Content Marketing
+Email Marketing (Mailchimp, HubSpot)
+Branding e Identità Visiva
+Pubbliche Relazioni e Comunicazione Aziendale
+User Experience (UX) e User Interface (UI) Design
+Analisi di Mercato e Customer Insights
+Digital Advertising e Growth Hacking
+Pianificazione della Produzione
+Gestione della Supply Chain
+Gestione Magazzino e Logistica
+Ottimizzazione dei Trasporti
+Analisi dei Costi e Procurement
+Gestione Inventario
+Selezione e Reclutamento del Personale
+Valutazione delle Performance
+Formazione e Sviluppo
+Contrattualistica del Lavoro
+Relazioni Sindacali e Normativa del Lavoro
+Welfare Aziendale
+Graphic Design (Photoshop, Illustrator, InDesign)
+Editing Video (Premiere Pro, Final Cut, After Effects)
+Produzione Multimediale
+Fotografia e Post-Produzione
+Illustrazione Digitale
+UI/UX Design
+Animazione 2D/3D (Blender, Cinema 4D, Maya)
+Disegno Tecnico
+Public Speaking
+Comunicazione Interpersonale
+Leadership e Team Management
+Negoziazione e Persuasione
+Gestione dei Conflitti
+Pensiero Critico e Analisi
+Storytelling
+Time Management
+Problem Solving
+Pianificazione Strategica
+Lavoro di Squadra
+Multitasking
+Gestione dello Stress
+Capacità di Adattamento
+Creatività e Innovazione
+Pensiero Laterale
+Design Thinking
+Capacità di Apprendimento Continuo    
+Metodologia Scientifica
+Statistica e Analisi Dati
+Creazione e Gestione di Report
+Redazione di Articoli Tecnici
+Gestione di Progetti di Ricerca
+Strumenti di Analisi Qualitativa e Quantitativa

@@ -1,0 +1,55 @@
+Amministratore Delegato (CEO)
+Direttore Generale
+Direttore Finanziario (CFO)
+Direttore Operativo (COO)
+Direttore Tecnologico (CTO)
+Direttore Marketing (CMO)
+Direttore delle Risorse Umane (HR Director)
+Direttore Vendite
+Direttore della Produzione
+Direttore Logistica
+Responsabile Qualità
+Responsabile IT
+Responsabile Ricerca e Sviluppo
+Responsabile Sicurezza sul Lavoro
+Responsabile Comunicazione
+Responsabile Acquisti
+Responsabile Servizio Clienti
+Responsabile Legale
+Responsabile Sostenibilità
+Responsabile Compliance
+Project Manager
+Product Manager
+Key Account Manager
+Marketing Manager
+Sales Manager
+Finance Manager
+HR Manager
+IT Manager
+Supply Chain Manager
+Business Analyst
+Data Analyst
+Consulente Aziendale
+Ingegnere di Processo
+Ingegnere Gestionale
+Ingegnere della Qualità
+Specialista in Risorse Umane
+Specialista in Digital Marketing
+Specialista in Cybersecurity
+Analista Contabile
+Analista Finanziario
+Analista di Mercato
+Analista IT
+Tecnico di Produzione
+Tecnico Manutentore
+Tecnico Commerciale
+Programmatore Software
+Sviluppatore Web
+Designer Grafico
+Operatore di Magazzino
+Impiegato Amministrativo
+Impiegato Commerciale
+Addetto alle Vendite
+Addetto al Servizio Clienti
+Operaio Specializzato
+Segretario

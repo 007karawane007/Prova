@@ -1,0 +1,48 @@
+Ingegneria Informatica - Computer Engineering
+Ingegneria Elettronica - Electronic Engineering
+Ingegneria Meccanica - Mechanical Engineering
+Ingegneria Civile - Civil Engineering
+Ingegneria Gestionale - Management Engineering
+Ingegneria Chimica - Chemical Engineering
+Ingegneria Aerospaziale - Aerospace Engineering
+Scienze Informatiche - Computer Science
+Fisica - Physics
+Matematica - Mathematics
+Chimica - Chemistry
+Scienze Ambientali - Environmental Science
+Biotecnologie - Biotechnology
+Scienze Biologiche - Biological Sciences
+Geologia - Geology
+Medicina e Chirurgia - Medicine and Surgery
+Odontoiatria - Dentistry
+Infermieristica - Nursing
+Farmacia - Pharmacy
+Biotecnologie Mediche - Medical Biotechnology
+Scienze Motorie - Sports Science
+Fisioterapia - Physiotherapy
+Ostetricia - Midwifery
+Veterinaria - Veterinary Medicine
+Economia - Economics
+Economia e Commercio - Business and Economics
+Finanza - Finance
+Marketing - Marketing
+Management - Management
+Scienze Statistiche - Statistics
+Giurisprudenza - Law
+Scienze Politiche - Political Science
+Relazioni Internazionali - International Relations
+Sociologia - Sociology
+Psicologia - Psychology
+Scienze dell'Educazione - Education Sciences
+Scienze della Comunicazione - Communication Sciences
+Filosofia - Philosophy
+Lettere - Literature
+Storia - History
+Antropologia - Anthropology
+Archeologia - Archaeology
+Lingue e Letterature Straniere - Foreign Languages and Literatur
+Architettura - Architecture
+Design Industriale - Industrial Design
+Belle Arti - Fine Arts
+Moda - Fashion Design
+Musica - Music
