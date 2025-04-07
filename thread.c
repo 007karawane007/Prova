@@ -1,45 +1,27 @@
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 #include <pthread.h>
-#include <unistd.h>
-#include <signal.h>
+#include <time.h>
 
-long int buffer[4];
-pthread_t thread1, thread2;
-pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+int sum=0;
 
-void* leggi(void* arg){
-    FILE *file = fopen("/dev/urandom", "rb");
-    long int n;
-    fscanf(file, "%ld", &n);
-    for(int i=0; i<4; i++){
-        if(buffer[i]==0){
-            pthread_mutex_lock(&mutex);
-            buffer[i]=n;
-            pthread_mutex_unlock(&mutex);
-        }
+void *somma(void* arg){
+    int *a=(int *)arg;
+    int j=4;
+    for(int i=0; i<=j; i++){
+        sum=sum+a[i];
     }
-    sleep(5);
+    return arg;
 }
 
-void* stampa(void* arg){
-    for(int i=0; i<4; i++){
-        if(buffer[i]!=0){
-            printf("%ld, ", buffer[i]);
-        }
-    }
-    sleep(20);
-}
-
-void sigint(){
-    pthread_join(thread1, NULL);
-    pthread_join(thread2, NULL);
-}
-
-int main(){
-    while(1){
-        signal(SIGINT, sigint);
-        pthread_create(&thread1, NULL, leggi, NULL);
-        pthread_create(&thread2, NULL, stampa, NULL);
-    }
+int main(int argc, char **argv){
+    pthread_t threads[2];
+    int a[]={1, 2, 3, 4, 5, 6, 7, 8, 9};
+    pthread_create(&threads[0], NULL, somma, (void*)a);
+    pthread_create(&threads[1], NULL, somma, (void*)(a+5));
+    pthread_join(threads[0], NULL);
+    pthread_join(threads[1], NULL);
+    printf("%d\n", sum);
+    return 0;
 }
