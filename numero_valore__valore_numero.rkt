@@ -1,0 +1,38 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-intermediate-lambda-reader.ss" "lang")((modname numero_valore__valore_numero) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+(define num-val
+  (lambda (num B)
+    (let ((k (- (string-length num) 1))
+          )
+      
+      (if (= k 0)
+          (digit-val num)
+          (+ (* B (num-val (substring num 0 k) B)) (digit-val (substring num k)))
+          )
+      
+      )
+    ))
+
+(define digit-val
+  (lambda (digit)
+    (- (char->integer (string-ref digit 0)) pos-digit-0)
+    ))
+
+(define pos-digit-0 (char->integer #\0))
+
+(define num-rep
+  (lambda (n B)
+    (let ((q (quotient n B))
+          (r (remainder n B))
+          )
+      (if (= q 0)
+          (digit-rep n)
+          (string-append (num-rep q B) (digit-rep r))
+          ))
+    ))
+
+(define digit-rep
+  (lambda (v)
+    (string (integer->char (+ pos-digit-0 v)))
+    ))

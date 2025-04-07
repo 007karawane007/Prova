@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.target=Huffman
+comment1.params=src
+comment1.target=int[]\ freqCar(java.lang.String)
+comment2.params=freq
+comment2.target=Nodo\ alberoHuffman(int[])
+comment3.params=rad
+comment3.target=java.lang.String[]\ tabHuffman(Nodo)
+comment3.text=public\ static\ String[]\ tabHuffman(Nodo\ rad){\r\n\ \ \ \ \ \ \ \ String[]\ tab\ \=\ new\ String[InputTextFile.CHARS];\r\n\r\n\ \ \ \ \ \ \ \ compilaTab(rad,\ "",\ tab);\r\n\ \ \ \ \ \ \ \ return\ tab;\r\n\ \ \ \ }\r\n\ \ \ \ private\ static\ void\ compilaTab(Nodo\ n,\ String\ cod,\ String[]\ tab){\r\n\ \ \ \ \ \ \ \ if(n.foglia()){\r\n\ \ \ \ \ \ \ \ \ \ \ \ tab[n.simbolo()]\ \=\ cod;\r\n\ \ \ \ \ \ \ \ }else{\r\n\ \ \ \ \ \ \ \ \ \ \ \ compilaTab(n.sinistro(),\ cod\ +\ "0",\ tab);\r\n\ \ \ \ \ \ \ \ \ \ \ \ compilaTab(n.destro(),\ cod\ +\ "1",\ tab);\r\n\ \ \ \ \ \ \ \ }\r\n}
+comment4.params=radice
+comment4.target=java.lang.String\ codificaAlbero(Nodo)
+comment4.text=public\ static\ String\ codificaAlbero(Nodo\ nodo){\r\n\ \ \ \ \ \ \ \ if(nodo.foglia()){\r\n\ \ \ \ \ \ \ \ \ \ \ \ char\ c\ \=\ nodo.simbolo();\r\n\ \ \ \ \ \ \ \ \ \ \ \ if((c\ \=\=\ '@')\ ||\ (c\ \=\=\ '\\\\')){\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ "\\\\"\ +\ c;\r\n\ \ \ \ \ \ \ \ \ \ \ \ }else{\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ ""\ +\ c;\r\n\ \ \ \ \ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ }else{\r\n\ \ \ \ \ \ \ \ \ \ \ \ return\ "@"\ +\ codificaAlbero(nodo.sinistro())\ +\ codificaAlbero(nodo.destro());\r\n\ \ \ \ \ \ \ \ }\r\n}
+comment5.params=src\ dst
+comment5.target=void\ comprimi(java.lang.String,\ java.lang.String)
+comment6.params=in
+comment6.target=Nodo\ ripristinaAlbero(huffman_toolkit.InputTextFile)
+comment6.text=public\ static\ Nodo\ ripristinaAlbero(InputTextFile\ in){\r\n\ \ \ \ \ \ \ \ char\ c\ \=\ in.readChar();\r\n\ \ \ \ \ \ \ \ if(c\ \=\=\ '@'){\r\n\ \ \ \ \ \ \ \ \ \ \ \ //Nodo\ Intermedio\r\n\ \ \ \ \ \ \ \ \ \ \ \ Nodo\ l\ \=\ ripristinaAlbero(in);\r\n\ \ \ \ \ \ \ \ \ \ \ \ Nodo\ r\ \=\ ripristinaAlbero(in);\r\n\ \ \ \ \ \ \ \ \ \ \ \ return\ new\ Nodo(l,\ r);\r\n\ \ \ \ \ \ \ \ }else{\r\n\ \ \ \ \ \ \ \ \ \ \ \ //Carattere\r\n\ \ \ \ \ \ \ \ \ \ \ \ if(c\ \=\=\ '\\\\'){\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ c\ \=\ in.readChar();\r\n\ \ \ \ \ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ \ \ \ \ return\ new\ Nodo(c,\ 0);\r\n\ \ \ \ \ \ \ \ }\r\n}
+comment7.params=src\ dst
+comment7.target=void\ decomprimi(java.lang.String,\ java.lang.String)
+numComments=8

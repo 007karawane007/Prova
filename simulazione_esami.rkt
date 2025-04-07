@@ -1,0 +1,229 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-intermediate-lambda-reader.ss" "lang")((modname simulazione_esami) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+(define match ;val: string
+  (lambda (u v) ;u,v: string
+    (if (or  (string=? u "") (string=? v ""))
+        ""
+        (let ((uh (string-ref u 0)) (vh (string-ref v 0))
+              (s    (match (substring u 1) (substring v 1)))
+              )
+          (if (char=? uh vh)
+              (string-append (string vh) s)
+              (string-append "*" s)
+              ))
+        )));V
+
+(define offset (char->integer #\0))
+
+(define last-digit
+  (lambda (base) (integer->char (+ (- base 1) offset)) ))
+
+(define next-digit
+  (lambda (dgt)   (string    (integer->char (+ (char->integer dgt) 1))) ))
+
+(define increment
+  (lambda (num base) ; 2 <= base <= 10
+    (let ((digits (string-length num)))
+      (if (= digits 0)
+          "1"
+          (let ((dgt (string-ref num (- digits 1))))
+            (if (char=? dgt (last-digit base))
+                (string-append  (increment (substring num 0 (- digits 1)) base) 
+                 "0")
+                (string-append (substring num 0 (- digits 1)) (next-digit dgt))
+                ))
+))));V
+
+(define lcs ; valore: lista di terne
+  (lambda (u v) ; u, v: stringhe
+    (lcs-rec  1   u   1   v)
+))
+
+(define lcs-rec
+  (lambda (i u j v)
+    (cond ((or (string=? u "") (string=? v ""))
+           null)
+          ((char=? (string-ref u 0) (string-ref v 0))
+           (cons (list i j (substring u 0 1))
+            (lcs-rec (+ i 1) (substring u 1) (+ j 1) (substring v 1)) ))
+          (else
+           (better (lcs-rec (+ i 1) (substring u 1) j v) (lcs-rec i u (+ j 1) (substring v 1)))    
+))
+))
+
+(define better
+  (lambda (x y)
+    (if (< (length x) (length y)) y x)
+));V
+
+(define cyclic-string ;val: stringa
+  (lambda (pattern length) ;pattern: stringa length: intero
+    (if (< (string-length pattern) length)
+        (cyclic-string (string-append pattern pattern) length)
+        (substring pattern 0 length)
+        )
+    ));V
+
+;yi=-1 se xi+x(i+1)<0 yi=0 se xi+x(i+1)=0 yi=1 se xi+(xi+1)>0
+(define av ;val: lista n-1 elementi
+  (lambda (x) ;x: lista £ [-1, 0, 1] n elementi
+      (if (null? (cdr (cdr x)))
+           (av-ref x)
+          (append  (av-ref x) (av (cdr x)))
+      )
+    ))
+
+(define av-ref
+  (lambda (x)
+      (let((xi (car x))
+           (xi+1 (car (cdr x)))
+           (y null)
+           )
+        (cond ((< (+ xi xi+1) 0)
+               (cons -1 y))
+              ((= (+ xi xi+1) 0)
+               (cons 0 y))
+              ((> (+ xi xi+1) 0)
+             (cons 1 y))
+              )
+        )
+    ));V
+
+(define r-val ;val: int
+  (lambda (s) ;s: stringa .010
+    (frazionaria (substring s 1))
+ ))
+
+(define frazionaria
+  (lambda (n)
+   (frazionaria-rec n 1/2)
+    ))
+
+(define frazionaria-rec
+  (lambda (n k)
+    (if (= (string-length n) 0)
+        0
+        (+ (frazionaria-rec (substring n 1) (* 1/2 k)) (* k (bit-rep->number (substring n 0 1)))) 
+          ;(+ (* (expt 2 (- 0 k)) (frazionaria (substring n 0 k))) (bit-rep->number (substring n k)))
+          )
+    ))
+
+(define bit-rep->number
+  (lambda (digit)
+    (cond ((string=? digit "0") 0)
+          ((string=? digit "1") 1)
+          )
+    ));V
+
+(define shared
+  (lambda (u v)
+    (cond ((or (null? u) (null? v))
+           null)
+          ((= (car u) (car v))
+           (cons (car u) (shared (cdr u) (cdr v))))
+          ((< (car u) (car v))
+           (shared (cdr u) v))
+          (else
+           (shared u (cdr v)))
+          )));V
+
+(define parity-check-failures ;val:lista
+  (lambda (ls) ;ls: lista di stringhe binarie
+    (parity-check-failures-rec ls 0 null)
+ ))
+
+(define parity-check-failures-rec ;val:lista
+  (lambda (ls k lista) ;ls, li: lista di stringhe binarie k, i: int
+    (let ((li (map (lambda (s) (conto-uni s 0)) ls))
+          )
+    (if (null? li)
+        lista
+        (if (not (even? (car li)))
+            (parity-check-failures-rec (cdr ls) (+ k 1) (append lista (list k)))
+            (parity-check-failures-rec (cdr ls) (+ k 1) lista))
+    ))))
+
+(define conto-uni ;val int
+  (lambda (s i) ;s string i: int
+    (if (string=? s "")
+        i
+        (if (char=? (string-ref s 0) #\1)
+            (conto-uni (substring s 1) (+ i 1))
+            (conto-uni (substring s 1) i))
+        )
+    ));V
+
+(define closest-pair
+  (lambda (ls)
+    (let ((x (lista-sottrazioni ls null))
+          )
+    (if (null? (cdr (cdr ls)))
+        ls
+        (append (list (list-ref ls (closest-pair-rec x 0 (minimo x (- (car (cdr ls)) (car ls)))))) (list(list-ref ls (+ (closest-pair-rec x 0 (minimo x (- (car (cdr ls)) (car ls)))) 1)))))
+    )))
+
+(define closest-pair-rec
+  (lambda (lista i min)
+    (if (= (car lista) min)
+        i
+        (closest-pair-rec (cdr lista) (+ i 1) min))
+    ))
+
+  (define minimo
+    (lambda (lista min)
+      (if (null? lista)
+          min
+          (if (< (car lista) min)  
+              (minimo (cdr lista) (car lista))
+              (minimo (cdr lista) min))
+          )
+      ))
+
+(define lista-sottrazioni
+  (lambda (li y)
+    (if (null? (cdr (cdr li)))
+        (cons (- (car (cdr li)) (car li)) y)
+        (lista-sottrazioni (cdr li) (cons (- (car (cdr li)) (car li)) y)))
+    ));V
+
+(define sorted-char-list
+  (lambda (s)
+    (controllo-ripetizioni (sorted-char-list-rec s null))
+    ))
+
+(define sorted-char-list-rec
+  (lambda (s ls)
+    (if (string=? s "")
+        ls
+        (sorted-char-list-rec (string-append (substring s 0 (carattere-minore s 0 0)) (substring s (+ (carattere-minore s 0 0) 1))) (append  ls (list (string-ref s (carattere-minore s 0 0)))))
+        )))
+
+(define carattere-minore
+  (lambda (s i j)
+    (if (= j (string-length s))
+        i
+        (cond ((char<? (string-ref s i) (string-ref s j))
+               (carattere-minore s i (+ j 1)))
+              ((char>? (string-ref s i) (string-ref s j))
+               (carattere-minore s j 0))
+              ((char=? (string-ref s i) (string-ref s j))
+               (carattere-minore s i (+ j 1)))
+              )
+        )
+    ))
+ 
+(define controllo-ripetizioni
+  (lambda (lista)
+    (if (null? lista)
+        lista
+        (if (null? (cdr (cdr lista)))
+            (if (char=? (car lista) (car (cdr lista)))
+                (cdr lista)
+                lista)
+            (if (char=? (car lista) (car (cdr lista)))
+                (controllo-ripetizioni (cdr lista))
+                (cons (car lista) (controllo-ripetizioni (cdr lista))))
+            )
+        )
+    ));V

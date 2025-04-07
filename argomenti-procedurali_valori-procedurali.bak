@@ -1,0 +1,98 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-intermediate-lambda-reader.ss" "lang")((modname argomenti-procedurali_valori-procedurali) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+;cifrario di cesare
+;argomenti procedurali
+
+(define enc ;val: stringa criptata
+  (lambda (msg rule) ;msg: stringa alfabeto maiuscolo rule: procedura [char -> char criptato]
+    (if (string=? msg "")
+        ""
+        (string-append (string (rule (string-ref msg 0))) (enc (substring msg 1) rule))
+        )
+    ))
+
+;(enc "QUALCOSA" (lambda (c) c))
+
+;;regola di cesare
+(define rot-3
+  (lambda (c)
+    (let (( k (+ (char->integer c) 3))
+          )
+      (if (<= k pos-Z)
+          (integer->char k)
+          (integer->char (- k 26))
+          )
+      )
+    ))
+
+(define pos-A (char->integer #\A))
+(define pos-I (char->integer #\I))
+(define pos-T (char->integer #\T))
+(define pos-V (char->integer #\V))
+(define pos-X (char->integer #\X))
+(define pos-Z (char->integer #\Z))
+
+;(enc "QUALCOSA" rot-3)
+
+;valori procedurali
+(define rot
+  (lambda (R)
+    (lambda (c)
+      (let ((k (+ (char->integer c) R))
+            )
+        (if (<= k pos-Z)
+            (integer->char k)
+            (integer->char (- k 26))
+            )
+        )
+      )))
+;A B C D E F G H I L M N O P Q R S T V X
+(define rot-latino
+  (lambda (R)
+    (lambda (c)
+      (let ((k (+ (char->integer c) R))
+            )
+        (cond  ((< k pos-I)
+               (integer->char k))
+               ((= k pos-I)
+               (integer->char (+ k 2)))
+               ((and (> k pos-I) (< k (char->integer #\L)))
+               (integer->char (+ k 2)))
+               ((<= k pos-T)
+               (integer->char k))
+               ((and (> k pos-T) (< k (char->integer #\V)))
+               (integer->char (+ k 1)))
+               ((= k pos-V)
+               (integer->char k))
+               ((and (> k pos-V) (< k (char->integer #\X)))
+               (integer->char (+ k 1)))
+               ((= k pos-X)
+               (integer->char k))
+               ((> k pos-X)
+               (integer->char (- k 24)))
+        )
+        )
+      )))
+
+(define dec ;val: procedura [char->char decriptato]
+  (lambda (rule) ;rule: procedura [char->char criptato]
+    (let ((R (- (char->integer (rule #\A)) pos-A))
+          )
+      (rot (- 26 R))
+      )
+    ))
+
+(define inv ;val: procedura [char->char decriptato]
+  (lambda (rule) ;rule: procedura [char->char criptato]
+    (lambda (c) ;c : char
+      (find pos-A c rule)
+      )))
+
+(define find ;val: char
+  (lambda (x c rule) ;x: intero posizione, c: char, rule: procedura [char->char criptato]
+    (if (char=? (rule (integer->char x)) c)
+        (integer->char x)
+        (find (+ x 1) c rule)
+        )
+    ))

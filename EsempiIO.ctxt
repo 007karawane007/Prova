@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.target=EsempiIO
+comment1.params=src\ dst
+comment1.target=int\ copiaFile(java.lang.String,\ java.lang.String)
+numComments=2

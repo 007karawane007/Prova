@@ -1,0 +1,60 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-intermediate-lambda-reader.ss" "lang")((modname Hanoii) (read-case-sensitive #t) (teachpacks ((lib "hanoi.ss" "installed-teachpacks"))) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ((lib "hanoi.ss" "installed-teachpacks")) #f)))
+(define hanoi-moves ; val: lista di coppie
+  (lambda (n) ; n > 0 intero
+    (hanoi-rec n 1 2 3)
+))
+
+(define hanoi-rec ; val: lista di coppie
+  (lambda (n s d t) ; n intero, s, d, t: posizioni
+    (if (= n 1)
+        (list (list s d))
+        (let ((m1 (hanoi-rec (- n 1) s t d))
+              (m2 (hanoi-rec (- n 1) t d s))
+              )
+          (append m1 (cons (list s d) m2))
+          ))
+))
+
+(define hanoi-disks ;val lista
+  (lambda (n k) ;n, k interi n>0 0<=k<=(2^n)-1
+    (hanoi-disks-rec n k '(1 0) '(2 0) '(3 0))
+    ))
+
+(define hanoi-disks-rec
+  (lambda (n k s d t)
+    (if (= n 0)
+        (list s d t)
+        (if (< k (expt 2 (- n 1)))
+            (hanoi-disks-rec (- n 1) k (list (car s) (+ (car (cdr s)) 1)) t d)
+            (hanoi-disks-rec (- n 1) (- k (expt 2 (- n 1))) t (list (car d) (+ (car (cdr d)) 1)) s)
+            )
+     )
+    ))
+
+(define hanoi-picture
+  (lambda (n k)
+    (hanoi-picture-rec n k n (towers-background n) '(1 0) '(2 0) '(3 0))
+    ))
+
+(define hanoi-picture-rec
+  (lambda (n k n1 img s d t)
+    (if (= n 0)
+        img
+        (if (< k (expt 2 (- n 1)))
+            (hanoi-picture-rec (- n 1) k n1 (above (disk-image n n1 (car s) (car (cdr s))) img) (list (car s) (+ (car (cdr s)) 1)) t d)
+            (hanoi-picture-rec (- n 1) (- k (expt 2 (- n 1))) n1 (above (disk-image n n1 (car d) (car (cdr d))) img) t (list (car d) (+ (car (cdr d)) 1)) s)
+            )
+     )
+    ))
+
+;(above (disk-image 4 5 1 1) (above (disk-image 5 5 1 0) (towers-background 5)))
+(hanoi-picture 3 0)
+(hanoi-picture 3 1)
+(hanoi-picture 3 2)
+(hanoi-picture 3 3)
+(hanoi-picture 3 4)
+(hanoi-picture 3 5)
+(hanoi-picture 3 6)
+(hanoi-picture 3 7)

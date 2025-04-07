@@ -1,0 +1,50 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-intermediate-lambda-reader.ss" "lang")((modname llcs-lcs) (read-case-sensitive #t) (teachpacks ((lib "drawings.ss" "installed-teachpacks"))) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ((lib "drawings.ss" "installed-teachpacks")) #f)))
+(define llcs
+  (lambda (u v)
+    (cond ((or (string=? u "") (string=? v ""))
+           0)
+          ((char=? (string-ref u 0) (string-ref v 0))
+           (+ 1 (llcs (substring u 1) (substring v 1))))
+          (else
+           (max (llcs u (substring v 1)) (llcs (substring u 1) v))
+           )
+          )
+    ))
+
+(define lcs
+  (lambda (u v)
+    (cond ((or (string=? u "") (string=? v ""))
+           "")
+          ((char=? (string-ref u 0) (string-ref v 0))
+           (string-append (substring u 0 1) (lcs (substring u 1) (substring v 1))))
+          (else
+            (longer (lcs u (substring v 1)) (lcs (substring u 1) v))
+            )
+          )
+    ))
+
+(define longer
+  (lambda (u v)
+    (cond ((< (string-length u) (string-length v))
+          v)
+          ((> (string-length u) (string-length v))
+          u)
+          ((= (random 2) 0)
+          v)
+          (else u)
+          )
+    ))
+
+(define ldif
+  (lambda (u v)
+    (cond ((or (string=? u "") (string=? v ""))
+           0)
+          ((not (char=? (string-ref u 0) (string-ref v 0)))
+           (+ 1 (ldif (substring u 1) (substring v 1))))
+          (else
+           (max (ldif u (substring v 1)) (ldif (substring u 1) v))
+           )
+          )
+    ))

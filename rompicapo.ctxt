@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=rompicapo
+comment1.params=n
+comment1.target=rompicapo(int)
+comment2.params=
+comment2.target=boolean\ ordinato()
+comment3.params=
+comment3.target=boolean\ possibileSpostare()
+comment4.params=
+comment4.target=void\ configurazione()
+comment5.params=r
+comment5.target=void\ spostamento(rompicapo)
+comment6.params=
+comment6.target=void\ iterazione()
+numComments=7

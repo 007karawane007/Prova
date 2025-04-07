@@ -1,0 +1,27 @@
+#BlueJ class context
+comment0.target=Esercitazione
+comment1.params=t\ u\ v
+comment1.target=int\ llcs3(java.lang.String,\ java.lang.String,\ java.lang.String)
+comment10.params=s
+comment10.target=java.lang.String\ lps(java.lang.String)
+comment11.params=u\ v
+comment11.target=java.lang.String\ longer(java.lang.String,\ java.lang.String)
+comment12.params=s
+comment12.target=java.lang.String\ lpsDP(java.lang.String)
+comment2.params=t\ u\ v
+comment2.target=int\ llcs3M(java.lang.String,\ java.lang.String,\ java.lang.String)
+comment3.params=t\ u\ v\ i\ j\ k\ mem
+comment3.target=int\ llcs3Mem(java.lang.String,\ java.lang.String,\ java.lang.String,\ int,\ int,\ int,\ int[][][])
+comment4.params=m
+comment4.target=boolean\ isSimmetrica(int[][])
+comment5.params=root
+comment5.target=int\ shortestCodeLength(Nodo)
+comment6.params=v
+comment6.target=double[]\ closestPair(double[])
+comment7.params=s\ t
+comment7.target=int\ commonStretches(java.lang.String,\ java.lang.String)
+comment8.params=root
+comment8.target=int\ codeSizeIter(Nodo)
+comment9.params=v
+comment9.target=boolean\ heapCheck(double[])
+numComments=13

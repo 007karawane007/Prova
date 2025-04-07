@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=Problema11
+comment0.text=\r\n\ Board;\r\n\ b\ \=\ new\ Board(n);\r\n\ b.addQueen(i,\ j)\ \:\ Board;\r\n\ b.size()\ \:\ Int;\r\n\ b.queensOn()\ \:\ Int;\r\n\ b.underAttac(i,\ j)\ \:\ Boolean;\r\n\ b.arrangement()\ \:\ String;\r\n
+comment1.params=n
+comment1.target=Problema11(int)
+comment2.params=n\ q\ r\ c\ dU\ dD
+comment2.target=Problema11(int,\ int,\ SList,\ SList,\ SList,\ SList)
+comment3.params=
+comment3.target=int\ size()
+comment4.params=
+comment4.target=int\ queensOn()
+comment5.params=i\ j
+comment5.target=java.lang.Boolean\ underAttac(int,\ int)
+comment6.params=i\ j
+comment6.target=Problema11\ addQueen(int,\ int)
+numComments=7
